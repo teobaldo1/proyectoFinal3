@@ -65,19 +65,23 @@ class UsuariosC
      {
           
 
-          $maestro=$dataC["nombre_maestro"];
-          $idClase=$dataC["clase_maestro_id"];
-          $materia=$dataC["editClass"];
+          $editClass=$dataC["editClass"];
+          $clase_maestro_id=$dataC["id"];
+          $maestroId=$dataC["maestro"];
 
        
           
-          $queryupdate = "update clases set materias = '$materia' Where id = '$idClase' ";
+          $getId= "select clase_id from clases_maestros where  id = '$clase_maestro_id' ";
+          $idClass =  Database::query($getId);
+          $data = $idClass->fetchAll(PDO::FETCH_ASSOC);
+          
+          $idMateria=$data[0]["clase_id"];
+
+          $queryupdate = "update clases_maestros set maestro_id = '$maestroId' Where id = '$clase_maestro_id' ";
           $resp =  Database::query($queryupdate);
 
-          $maestro=$dataC["maestro"];
-
-          $queryupdate1 = "update clases_maestros set maestro_id = '$maestro' Where clase_id = '$idClase' ";
-          $resp =  Database::query($queryupdate1);
+          $queryUpdate1 = "update clases set materias = '$editClass' Where id = '$idMateria' ";
+          $resp1 =  Database::query($queryUpdate1);
 
           if ($resp) {
                

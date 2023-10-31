@@ -64,7 +64,7 @@ class ClasesController
 
   public function updateClass($dataClass)
   {
-
+   
    
     $dataClases = Clases::all();
     $dataC = UsuariosC::update($dataClass);
