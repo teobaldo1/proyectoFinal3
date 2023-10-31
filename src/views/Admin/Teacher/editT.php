@@ -11,7 +11,9 @@
 <body>
     <main class="h-screen bg-gray-300 flex w-[1300px] justify-center items-center">
         <div class="container ml-auto mr-auto  flex flex-col justify-center items-center ">
-
+            <?php
+              var_dump($usuarioT);  
+            ?>
 
 
             <form class="w-[400px] bg-white flex flex-col justify-center items-start pl-10 rounded-md h-[500px] gap-y-3" action="/updateT" method="post">
@@ -19,7 +21,7 @@
                 <h1 class="pb-[10px] text-2xl">Editar Maestro</h1>
 
                 <input type="text" hidden name="id" value="<?= $usuarioT['maestro_id'] ?>" />
-                <input type="text" hidden name="clase_id" value="<?= $usuarioT['clase_id'] ?>" />
+                <input type="text" hidden name="clase_id" value="<?= $usuarioT['id_materia_clase_maesto'] ?>" />
 
                 <div class="flex flex-col gap-y-1 ">
                     <label>DNI</label>

@@ -62,7 +62,7 @@ class TeacherController
     $dataT= UsuariosT::update($dataTeacher);
  
     if ($dataT) {
-      var_dump($dataTeacher);
+     
       header("Location:/readTeacher");
       
      }   

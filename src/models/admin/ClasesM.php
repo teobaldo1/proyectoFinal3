@@ -63,7 +63,7 @@ class UsuariosC
      public static function update($dataC)
 
      {
-          
+         
 
           $editClass=$dataC["editClass"];
           $clase_maestro_id=$dataC["id"];

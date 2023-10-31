@@ -44,33 +44,40 @@ class UsuariosT
 
      public static function deleteT($id)
      {
+          
           $queryDeleted = "delete from clases_maestros where maestro_id = $id";
 
           $resp =  Database::query($queryDeleted);
           if ($resp) {
-
+          
                return true;
           }
      }
      public static function find($id)
      {
-          $queryGetDataId = "select u.id, u.dni, u.correo,u.nombre, u.contrasena, u.direccion, u.fechaNacimiento, u.rol_id, cm.id, cm.clase_id, cm.maestro_id, c.id, c.materias from usuarios u  inner join clases_maestros cm  on u.id = cm.maestro_id inner join clases c  on cm.clase_id = c.id  where u.id= '$id'";
+          $queryGetDataId = "select u.id as idMaesto, u.dni, u.correo,u.nombre, u.contrasena, u.direccion, u.fechaNacimiento, u.rol_id, cm.id as id_clase_maestro , cm.clase_id as id_materia_clase_maesto, cm.maestro_id, c.id, c.materias as nombre_clase from usuarios u  inner join clases_maestros cm  on u.id = cm.maestro_id inner join clases c  on cm.clase_id = c.id  where u.id= '$id'";
           $resp =  Database::query($queryGetDataId);
           $dataId = $resp->fetch(PDO::FETCH_ASSOC);
 
-          return $dataId;
+          if ($dataId) {
+          
+               return $dataId;
+          }
+          
      }
 
      public static function update($dataT)
      {
-          $clase_id = $dataT["clase_id"];
+          var_dump($dataT["id"]);
+          
+          $clase_id = $dataT["id_clase_maestro"];
           $id = $dataT["id"];
           $dni = $dataT["dni"];
           $correo = $dataT["correo"];
           $nombre = $dataT["nombre"];
           $direccion = $dataT["direccion"];
           $fechaN = $dataT["fNacimiento"];
-          $clase = $dataT["clase"];
+          $clase = $dataT["nombre_clase"];
 
           $queryupdate = "update usuarios set dni='$dni', correo='$correo', nombre='$nombre', direccion='$direccion', fechaNacimiento='$fechaN' where id = $id";
           $resp =  Database::query($queryupdate);
