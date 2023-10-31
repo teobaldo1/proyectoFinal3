@@ -3,6 +3,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/config/Database.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/src/models/Roles.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/src/models/Clases.php");
 require_once($_SERVER["DOCUMENT_ROOT"] . "/src/models/admin/ClasesM.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/src/controllers/teacherController.php");
 
 
 
@@ -36,40 +37,41 @@ class ClasesController
 
 
     if ($newdata) {
-      header("Location:/readClass");
+      var_dump($usuariosC);
     }
   }
 
   public function deleteClass($id)
   {
+   
     $deleted = UsuariosC::deleteC($id);
-    $usuariosC = UsuariosC::all();  
+ 
 
     if ($deleted) {
-
+     
+      header("Location:/readClass");
     
-     header("Location:/readClass");
     }
   }
   public function editClass($id)
   {
+   
+    $dataClaseMaestro = UsuariosC::find($id);
+    $usuariosT = UsuariosT::all();
 
-    $usuarioC = UsuariosC::find($id);
-    $usuariosT = UsuariosC::all();
-
-    include $_SERVER["DOCUMENT_ROOT"] . "/src/views/Admin/Class/editClass.php";
+    include $_SERVER["DOCUMENT_ROOT"] ."/src/views/Admin/Class/editClass.php";
   }
 
   public function updateClass($dataClass)
   {
 
-    
+   
     $dataClases = Clases::all();
     $dataC = UsuariosC::update($dataClass);
     if ($dataC) {
 
       header("Location:/readClass");
      
-    }
+   }
   }
 }

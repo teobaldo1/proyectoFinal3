@@ -8,7 +8,7 @@ class UsuariosC
 
      public static function all()
      {
-          $queryDataBase = "select * from usuarios u  inner join clases_maestros cm  on u.id = cm.maestro_id inner join clases c  on cm.clase_id = c.id  where u.rol_id= 2";
+          $queryDataBase = "select cm.id as clase_maestro_id, u.nombre as nombre_maestro,c.materias as clase,cm.maestro_id as idDeMaestro from usuarios u  inner join clases_maestros cm  on u.id = cm.maestro_id inner join clases c  on cm.clase_id = c.id  where u.rol_id= 2";
 
           $res =  Database::query($queryDataBase);
           $data = $res->fetchAll(PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ class UsuariosC
 
      public static function deleteC($id)
      {
-          $queryDeleted = "delete from usuarios where id = $id";
+          $queryDeleted = "delete from clases_maestros where id = $id";
 
           $resp =  Database::query($queryDeleted);
           if ($resp) {
@@ -53,22 +53,20 @@ class UsuariosC
      
      public static function find($id)
      {
-          $queryGetDataId = "select materias from clases where id = $id";
-
+          $queryGetDataId = "select cm.id as clase_maestro_id, u.nombre as nombre_maestro,c.materias as clase  from usuarios u  inner join clases_maestros cm  on u.id = cm.maestro_id inner join clases c  on cm.clase_id = c.id  where cm.id= '$id'";
           $resp =  Database::query($queryGetDataId);
-
           $dataId = $resp->fetch(PDO::FETCH_ASSOC);
-
           return $dataId;
      }
+
 
      public static function update($dataC)
 
      {
           
 
-          $maestro=$dataC["maestro"];
-          $idClase=$dataC["materia"];
+          $maestro=$dataC["nombre_maestro"];
+          $idClase=$dataC["clase_maestro_id"];
           $materia=$dataC["editClass"];
 
        

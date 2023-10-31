@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case "/updateR":
             $controllerR->updateR($_POST);
             break;
-        case "/deleteClass":
+        case "/deleteClase":
             $controllerStudent->deleteClass($_POST["id"]);
         case "/updateC":
             $controllerC->updateClass($_POST);
@@ -101,7 +101,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             break;
         case "/editT":
             $controllerT->editT($_GET["id"]);
-
             break;
         case "/readClass":
             $controllerC->readC();

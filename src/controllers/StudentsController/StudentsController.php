@@ -19,9 +19,7 @@ class StudentsController
   {
     
     $usuariosE = UsuariosStudents::all($id);
-
-    
-   
+  
     include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumnos/readS.php";
 
   }

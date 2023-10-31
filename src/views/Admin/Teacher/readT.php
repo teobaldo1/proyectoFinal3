@@ -99,13 +99,13 @@
                     foreach ($usuariosT as $usuario) {
                     ?>
                         <tr class="flex">
-                            <td class="border-[1px] border-gray-500  w-[80px] flex justify-center"><?= $usuario["id"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[80px] flex justify-center"><?= $usuario["maestro_id"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[100px]  flex justify-center"><?= $usuario["dni"] ?></td>
-                            <td class="border-[1px] border-gray-500  w-[150px]  flex justify-center"><?= $usuario["nombre"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[150px]  flex justify-center"><?= $usuario["nombre_maestro"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[150px] flex justify-center "><?= $usuario["correo"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[150px] flex justify-center "><?= $usuario["direccion"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[130px] flex justify-center "><?= $usuario["fechaNacimiento"] ?></td>
-                            <td class="border-[1px] border-gray-500  w-[130px] flex justify-center "><?= $usuario["materias"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[130px] flex justify-center "><?= $usuario["clase"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[60px]  flex justify-center">
                                 <form action="/deleteT" method="post" class="bg-white">
                                     <a href="/editT?id=<?= $usuario["maestro_id"] ?>">Editar</a>

@@ -81,14 +81,16 @@
                     foreach ($usuariosE as $usuario) {
                     ?>
                         <tr class="flex">
-                            <td class="border-[1px] border-gray-500  w-[80px] flex justify-center"><?= $usuario["id"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[80px] flex justify-center"><?= $usuario["id"]?></td>
                             <td class="border-[1px] border-gray-500  w-[150px] flex justify-center "><?= $usuario["materias"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[80px]  flex justify-center">
-                                <form action="/deleteClass" method="post" class="bg-white">
-                                     <button type="submit" name="id" value="<?= $usuario["id"] ?>"><span class="material-symbols-outlined text-red-500">
+                                <form action="/deleteClase" method="post" class="bg-white">
+                                     <button type="submit" name="id" value="<?= $usuario["id"]  ?>"><span class="material-symbols-outlined text-red-500">
                                             delete
                                         </span></button>
+                                       
                                 </form>
+
                             </td>
                         </tr>
                     <?php

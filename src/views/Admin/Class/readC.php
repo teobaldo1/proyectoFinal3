@@ -72,8 +72,8 @@
                         <h3>/ Clases</h3>
                     </div>
                 </div>
-            <div class="flex">
-                <h2>Informacion de Clases</h2>
+            <div class="flex justify-between items-center w-[500px] h-[50px] pl-4 pr-10 text-xs">
+                <h2 class="text-xl">Informacion de Clases</h2>
                 <button class="w-[100px] h-[30px] bg-blue-700 rounded-md"><a href="/createC" class="text-xs text-white">Agregar Clase</a></button>
             </div>
 
@@ -88,18 +88,19 @@
                 </thead>
                 <tbody class="bg-white ">
                     <?php
-                    
-                
+                 
+                  
                     foreach ($usuariosC as $usuario) {
                     ?>       
                         <tr class="flex">
-                            <td class="border-[1px] border-gray-500  w-[80px] flex justify-center"><?= $usuario["id"] ?></td>
-                            <td class="border-[1px] border-gray-500  w-[150px]  flex justify-center"><?= $usuario["materias"] ?></td>
-                            <td class="border-[1px] border-gray-500  w-[150px] flex justify-center "><?= $usuario["nombre"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[80px] flex justify-center"><?= $usuario["clase_maestro_id"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[150px]  flex justify-center"><?= $usuario["clase"] ?></td>
+                            <td class="border-[1px] border-gray-500  w-[150px] flex justify-center "><?= $usuario["nombre_maestro"] ?></td>
                             <td class="border-[1px] border-gray-500  w-[75px]  flex justify-center items-center">
                                 <form action="/deleteClass" method="post" class="bg-white">
-                                    <a href="/editClass?id=<?= $usuario["clase_id"] ?>">Editar</a>
-                                    <button type="submit" name="id" value="<?= $usuario["id"] ?>"><span class="material-symbols-outlined text-red-500">
+                                    <a href="/editClass?id=<?= $usuario["clase_maestro_id"] ?>">Editar</a>
+                                     
+                                    <button type="submit" name="id" value="<?= $usuario["clase_maestro_id"] ?>"><span class="material-symbols-outlined text-red-500">
                                             delete
                                         </span></button>
                                 </form>

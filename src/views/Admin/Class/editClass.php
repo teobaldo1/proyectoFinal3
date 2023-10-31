@@ -24,52 +24,25 @@
 
 
 
+                   
                     <div class="flex flex-col gap-y-3 ">
-                        <label>Nombre de la Materia a modificar</label>
-                        <select class="w-[320px] border-[1px] border-gray-500 text-gray-700 pl-2 rounded-md" name="materia">
-                            <?php
-
-                            foreach ($usuariosC as $usuario) {
-
-                                $nameClass = $usuario["materias"];
-                                $claseId = $usuario["clase_id"];
-
-
-                                if ($claseId === $usuario["id"]) {
-
-                                    echo "<option value='$claseId' selected>$nameClass</option>";
-                                } else {
-                                    echo "<option value='$claseId'>$nameClass</option>";
-                                }
-                            }
-                            ?>
-
-                        </select>
-                    </div>
-                    <div class="flex flex-col gap-y-3 ">
-                        <label>Nueva Materia</label>
-                        <input class="w-[320px] border-[1px] border-gray-500 text-gray-700 pl-2 rounded-md" type="text" name="editClass" value="<?= $usuario['materias'] ?>">
-
-                        <input type="text" hidden name="nameClass" value="<?= $usuario['materias'] ?>">
-
-
+                        <label>clase a modificar </label>
+                        <input class="w-[320px] border-[1px] border-gray-500 text-gray-700 pl-2 rounded-md" type="text" name="editClass" value="<?= $dataClaseMaestro['clase'] ?>">
+                         <input type="text" hidden name="id" value="<?= $_GET['id'] ?>">
+                      
                         <label>Maestro disponible para la clase</label>
-                        <select class="w-[320px] border-[1px] border-gray-500 text-gray-700 pl-2 rounded-md" name="maestro">
+                        <select class="w-[320px] border-[1px] border-gray-500 text-gray-700 pl-2 rounded-md" name="maestro" >
                             <?php
+                               foreach ($usuariosT as $maestro) {
 
+                                $nameMaestro = $maestro["nombre_maestro"];
+                                $maestroId = $maestro["id_maestro"];
+                                print_r($dataClaseMaestro);
+                                if ($nameMaestro == $dataClaseMaestro['nombre_maestro']) {
 
-
-
-                            foreach ($usuariosC as $usuario) {
-
-                                $maestro = $usuario["nombre"];
-                                $maestroId = $usuario["maestro_id"];
-                                echo "<option value='$maestroId'>$maestro</option>";
-                                if ($maestroId === $usuario["rol_id"]) {
-
-                                    echo "<option value='$maestroId' selected>$nameRol</option>";
+                                    echo "<option value='$maestroId' selected >$nameMaestro</option>";
                                 } else {
-                                    echo "<option value='$rolId'>$nameRol</option>";
+                                    echo "<option value='$maestroId'>$nameMaestro</option>";
                                 }
                             }
 
